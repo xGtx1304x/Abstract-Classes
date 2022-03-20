@@ -6,9 +6,7 @@
 
 Address::Address(const string &type, const string &address) : type(type), address(address) {}
 
-Address::~Address() {
-
-}
+Address::~Address() = default;
 
 const string &Address::getType() const {
     return type;
