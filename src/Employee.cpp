@@ -4,16 +4,13 @@
 
 #include "Employee.h"
 
-Employee::Employee(const string &string, int i, int employeeld, int jobld, float paymentPerHour,
-                   const BankAccount &bankAccount, Address **addressList) : Person(string, i), employeeld(employeeld),
-                                                                            jobld(jobld),
+Employee::Employee(const string &string, int i, int employeeId, int jobId, float paymentPerHour,
+                   const BankAccount &bankAccount) : Person(string, i), employeeId(employeeId),
+                                                                            jobId(jobId),
                                                                             paymentPerHour(paymentPerHour),
-                                                                            bankAccount(bankAccount),
-                                                                            addressList(addressList) {}
+                                                                            bankAccount(bankAccount) {}
 
-Employee::~Employee() {
-
-}
+Employee::~Employee() = default;
 
 int Employee::getEmployeeId() const {
     return employeeId;
@@ -47,6 +44,10 @@ void Employee::setBankAccount(const BankAccount &bankAccount) {
     Employee::bankAccount = bankAccount;
 }
 
-Address *const *Employee::getAddressList() const {
-    return addressList;
+Address *Employee::getAddressList(int pos) const {
+    return addressList.at(pos);
+}
+
+void Employee::addAddress(Address *ad) {
+    addressList.push_back(ad);
 }

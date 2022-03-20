@@ -7,6 +7,7 @@
 #include "Person.h"
 #include "Address.h"
 #include "BankAccount.h"
+#include <vector>
 
 class Employee :
         public Person {
@@ -15,10 +16,10 @@ private:
     int jobId;
     float paymentPerHour;
     BankAccount bankAccount;
-    Address* addressList[];
+    vector<Address*> addressList;
 public:
     Employee(const string &string, int i, int employeeId, int jobId, float paymentPerHour,
-             const BankAccount &bankAccount, Address **addressList);
+             const BankAccount &bankAccount);
     ~Employee() override;
 
     int getEmployeeId() const;
@@ -29,7 +30,8 @@ public:
     void setPaymentPerHour(float paymentPerHour);
     const BankAccount &getBankAccount() const;
     void setBankAccount(const BankAccount &bankAccount);
-    Address *const *getAddressList() const;
+    Address *getAddressList(int pos) const;
+    void addAddress(Address* ad);
 
     virtual float calculateSalary() = 0;
 };
