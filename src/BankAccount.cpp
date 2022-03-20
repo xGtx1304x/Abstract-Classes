@@ -6,9 +6,7 @@
 
 BankAccount::BankAccount(int bankNumber) : bankNumber(bankNumber) {}
 
-BankAccount::~BankAccount() {
-
-}
+BankAccount::~BankAccount() = default;
 
 int BankAccount::getBankNumber() const {
     return bankNumber;
